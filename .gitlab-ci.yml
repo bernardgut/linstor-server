@@ -156,9 +156,9 @@ deploy:
     - echo "DEPLOY"
   script:
     - cp Dockerfile.test-controller Dockerfile
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/linstor/linstor-server/controller:latest .
-    - docker push $CI_REGISTRY/linstor/linstor-server/controller:latest
+    - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_URL
+    - docker build -t $HARBOR_HOST/$HARBOR_PROJECT/linstor/linstor-server/controller:latest .
+    - docker push $HARBOR_HOST/$HARBOR_PROJECT/linstor/linstor-server/controller:latest
   tags:
     - shell
 
